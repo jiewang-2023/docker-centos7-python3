@@ -6,6 +6,7 @@ MAINTAINER developer ai@wanders.com
 # [linux 下用shell 写入多行文本](https://blog.csdn.net/zhaowei3828/article/details/19114157)
 # [python pip修改安装镜像源](https://blog.csdn.net/jeffery0207/article/details/82965910)
 ENV PYTHON_VERSION "3.9.13"
+COPY ./Centos-7.repo /etc/yum.repos.d/CentOS-Base.repo
 ##############################################
 # 基于centos7构建python3运行环境
 # 构建命令: 在Dockerfile文件目录下执行 docker build -t python-centos:3.5 .
@@ -15,7 +16,7 @@ ENV PYTHON_VERSION "3.9.13"
 RUN set -ex \
     # 预安装所需组件
     && yum install -y wget tar libffi-devel zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make initscripts \
-    && wget https://npm.taobao.org/mirrors/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz \
+    && wget https://mirrors.huaweicloud.com/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz \
     && tar -zxvf Python-${PYTHON_VERSION}.tgz \
     && cd Python-${PYTHON_VERSION} \
     && ./configure prefix=/usr/local/python3 \

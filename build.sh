@@ -1,0 +1,1 @@
+docker build -t centos7-python:3.9.13 -f 3.9.13.Dockerfile .
